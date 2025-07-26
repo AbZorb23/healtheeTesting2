@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthee - Health Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Login Page -->
+  <section id="loginPage" class="page">
+    <div class="video-container">
+      <video autoplay muted loop id="welcomeVideo">
+        <source src="assets/welcome.mp4" type="video/mp4">
+      </video>
+    </div>
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+    <p>No account? <a href="#" onclick="showPage('registerPage')">Register</a></p>
+  </section>
+
+  <!-- Register Page -->
+  <section id="registerPage" class="page hidden">
+    <h2>Register</h2>
+    <input type="text" id="registerUsername" placeholder="Username" required />
+    <input type="password" id="registerPassword" placeholder="Password" required />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+    <button onclick="register()">Create Account</button>
+    <p>Have an account? <a href="#" onclick="showPage('loginPage')">Login</a></p>
+  </section>
+
+  <!-- Main Dashboard Page -->
+  <section id="mainPage" class="page hidden">
+    <h2>Health Tracker Dashboard</h2>
+    <input type="number" id="sleep" placeholder="Hours of sleep" required />
+    <input type="number" id="water" placeholder="Water intake (litres)" required />
+    <input type="number" id="meals" placeholder="Meals per day" required />
+    <input type="text" id="pressure" placeholder="Blood Pressure (optional)" />
+    <select id="activity" required>
+      <option value="">Physical Activity?</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+    <select id="mood" required>
+      <option value="">Mood</option>
+      <option>Happy</option>
+      <option>Sad</option>
+      <option>Stressed</option>
+      <option>Okay</option>
+    </select>
+    <button onclick="submitHealthData()">Submit</button>
+    <button onclick="showPage('settingsPage')">Settings</button>
+    <button onclick="showPage('loginPage')">Logout</button>
+  </section>
+
+  <!-- Loading Page -->
+  <section id="loadingPage" class="page hidden">
+    <h2>Processing your input...</h2>
+    <p>AI is generating your result. Please wait...</p>
+  </section>
+
+  <!-- Result Page -->
+  <section id="resultPage" class="page hidden">
+    <h2>Your Health Suggestions</h2>
+    <div id="resultText">[Result will appear here]</div>
+    <h3>Do's</h3>
+    <ul id="dosList"></ul>
+    <h3>Don'ts</h3>
+    <ul id="dontsList"></ul>
+    <button onclick="showPage('mainPage')">Back to Dashboard</button>
+    <button onclick="showPage('stretchPage')">Stretching Tutorial</button>
+    <button onclick="showPage('loginPage')">Logout</button>
+  </section>
+
+  <!-- Stretching Tutorial Page -->
+  <section id="stretchPage" class="page hidden">
+    <h2>Stretching Tutorial</h2>
+    <video controls id="stretchVideo" width="300">
+      <source src="assets/stretching_damien_hakeem.mp4" type="video/mp4">
+    </video>
+    <button id="downloadVideoBtn">Download Stretching Video</button>
+    <button onclick="showPage('mainPage')">Back</button>
+  </section>
+
+  <!-- Settings Page -->
+  <section id="settingsPage" class="page hidden">
+    <h2>Settings</h2>
+    <input type="text" id="displayName" placeholder="New display name" />
+    <input type="password" id="newPassword" placeholder="New password" />
+    <button onclick="updateSettings()">Save Changes</button>
+    <button onclick="showPage('mainPage')">Back</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
